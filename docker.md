@@ -19,7 +19,7 @@ curl localhost:8081
 ```
 
 - docker compose ps : 現在の状態とポートの公開状態を表示
-
+- 再ビルドするときは `docker-compose build --no-cache`でキャッシュを無効化する方が無難
 ## コンテナ内に入る方法
 ```
 docker-compose exec alart-app sh
