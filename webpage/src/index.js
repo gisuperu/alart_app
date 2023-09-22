@@ -1,11 +1,14 @@
-// 引用元: https://qiita.com/c3drive/items/7f057823a9a5545a8dc0
+// index.js - alart-appのメインコード
+// 引用元 : https://developer.mozilla.org/ja/docs/Learn/Server-side/Express_Nodejs/Introduction
 
+const express = require("express");
+const app = express();
+const port = 1234;
 
-var http = require('http');      // httpサーバなどを扱う
-
-var server = http.createServer(function(req, res) {
-    res.write('Hello World');
-    res.end();
+app.get("/", function (req, res) {
+  res.send("Hello World! by EXPRESS!!");
 });
-server.listen(1234);
-console.log('サーバを起動しました');
+
+app.listen(port, function () {
+  console.log(`Example app listening on port ${port}!`);
+});
