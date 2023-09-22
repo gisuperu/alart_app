@@ -20,7 +20,18 @@ curl localhost:8081
 
 - docker compose ps : 現在の状態とポートの公開状態を表示
 
+## コンテナ内に入る方法
+```
+docker-compose exec alart-app sh
+```
+`alart-app`は`docker-compose.yml`のservice階層の要素名(サービス名)．
 
+`sh`は`bash`とか`/bin/sh`とかじゃないと実行できない場合がある．
+
+# 今後に向けてのメモ
+- イメージの軽量化
+    - マルチステージビルド
+- アプリケーションの起動を全てdocker化
 
 # 参考文献
 - node.jsのdockerfile : https://github.com/nodejs/docker-node/blob/main/README.md#how-to-use-this-image
