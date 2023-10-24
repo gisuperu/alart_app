@@ -54,3 +54,12 @@ SafariでするとWebPushの通知許可を求めるバナーがそもそもで�
 
 ### 今後の課題
 ソースコードを読んでいないからその解読及び応用を考察．
+
+### ServiceWorker(sw.js)
+基本的に`self.addEventListener('イベント' (event) => {});`が定形みたい．
+`'イベント'`の種類は多そうだけど，
+- install
+- push
+- notificationclick
+- fetch
+とかとかあるみたい
