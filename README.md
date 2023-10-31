@@ -63,3 +63,14 @@ SafariでするとWebPushの通知許可を求めるバナーがそもそもで�
 - notificationclick
 - fetch
 とかとかあるみたい
+
+
+### 参考URL
+- Node.js express
+  - https://developer.mozilla.org/ja/docs/Learn/Server-side/Express_Nodejs/Introduction
+  - https://white-azalea.hatenablog.jp/entry/2023/03/23/220319
+  - https://zenn.dev/aono/articles/629c8a7a0d7d6c
+  - https://www.i-ryo.com/entry/2020/04/16/215205
+- leaflet
+  - https://leafletjs.com/reference.html
+  - https://ops.jig-saw.com/tech-cate/leaflet_maps
