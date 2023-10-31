@@ -10,9 +10,9 @@ app.listen(port, () => {
     console.log(`Start app at http://localhost:${port}`);
 });
 
-// app.get('/', (req, res)  => {
-//     res.sendFile(__dirname + '/public/index.html');
-// });
+app.get('/', (req, res)  => {
+    res.sendFile(__dirname + '/public/index.html');
+});
 
 app.use('/', express.static("public"));
 

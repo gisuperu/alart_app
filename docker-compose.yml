@@ -8,7 +8,7 @@ services:
       - 8081:1234 # ポート接続 <メインOS側のポート>:<コンテナ内からのポート>
     volumes:
       - ./webpage/src:/app/src # 共有フォルダ(要検索)
-    # command: node /app/src/index.js # コンテナ内での実行コマンド(要検索)
+    command: node /app/src/index.js # コンテナ内での実行コマンド(要検索)
     tty: true 
     working_dir: /app/
   map-app:
@@ -19,3 +19,6 @@ services:
       - 8080:5678
     volumes:
       - ./mappage/src:/app/src
+    command: node /app/src/server.js # コンテナ内での実行コマンド(要検索)
+    tty : true
+    working_dir: /app/
