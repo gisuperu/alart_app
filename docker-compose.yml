@@ -11,3 +11,11 @@ services:
     # command: node /app/src/index.js # コンテナ内での実行コマンド(要検索)
     tty: true 
     working_dir: /app/
+  map-app:
+    build: ./mappage
+    image: map-app-image
+    container_name: map-app
+    ports:
+      - 8080:5678
+    volumes:
+      - ./mappage/src:/app/src
