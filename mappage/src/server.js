@@ -10,11 +10,11 @@ app.listen(port, () => {
     console.log(`Start app at http://localhost:${port}`);
 });
 
-app.get('/', (req, res)  => {
-    res.sendFile(__dirname + '/public/index.html');
-});
+// app.get('/', (req, res)  => {
+//     res.sendFile(__dirname + '/public/index.html');
+// });
 
-app.use('/', express.static("public"));
+app.use('/', express.static(__dirname + "/public"));
 
 // Not Foundページの作成?
 app.use((req, res, next) => {

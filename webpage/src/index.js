@@ -59,7 +59,7 @@ app.post('/webpushtest', (req, res) => {
 })
 
 // 上記URLでヒットしないなら、public の中を表示する
-app.use('/', express.static('public'));
+app.use('/', express.static(__dirname + '/public'));
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
