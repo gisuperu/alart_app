@@ -10,6 +10,14 @@ app.listen(port, () => {
     console.log(`Start app at http://localhost:${port}`);
 });
 
+app.get("/register", (req, res) => {
+    res.sendFile(__dirname + "/public/register");
+})
+
+app.post("/visualizer", (req, res) =>  {
+    res.sendFile(__dirname + "/public/visulizer");
+})
+
 // app.get('/', (req, res)  => {
 //     res.sendFile(__dirname + '/public/index.html');
 // });
