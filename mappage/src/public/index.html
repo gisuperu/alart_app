@@ -1,26 +1,26 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Map Webapp</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Map Webapp</title>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
 
 </head>
 <body>
-    <div id="mapid" style="width: 100%;height: 600px;"></div>
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
-    <script>
-        var map = L.map('mapid').setView([35.688544, 139.764692], 18);
-        L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
-          attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-        }).addTo(map);
-    
-        //JIG-SAW本社の位置にマーカーを追加する。
-        var marker = L.marker([35.688544,139.764692]).addTo(map);
-        //上のマーカーにポップアップを追加する。
-        marker.bindPopup("JIG-SAW本社").openPopup();
-      </script>
+  <div id="mapid" style="width: 100%;height: 600px;"></div>
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <script>
+    var map = L.map('mapid').setView([35.688544, 139.764692], 18);
+    L.tileLayer('https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png', {
+      attribution: "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
+    }).addTo(map);
+
+    //JIG-SAW本社の位置にマーカーを追加する。
+    var marker = L.marker([35.688544,139.764692]).addTo(map);
+    //上のマーカーにポップアップを追加する。
+    marker.bindPopup("JIG-SAW本社").openPopup();
+  </script>
 </body>
 </html>
