@@ -24,11 +24,37 @@ function init(){
 
     mapListSet();
 
-    mapobj.addLayer( Basic_Map[ 0 ] );
+    mapobj.addLayer( Basic_Map[0] );
 
 
     L.control.layers(baseMap).addTo(mapobj);
 
+}
+
+function btnMapSelect(){
+    let pos  = mapobj.getCenter();
+    let zoom = mapobj.getZoom();
+
+    document.getElementById("fixed-map-center-text").innerHTML = "(" + pos.lat + ", " + pos.lng + ") : " + zoom;
+    
+    save2JSON({
+        lat : pos.lat,
+        lng : pos.lng,
+        zoom : zoom,
+    });
+}
+
+// function getFarmData(){
+//     farmData = "../../database/output.json";
+
+// }
+
+function save2JSON(jsn){
+    outDir = "../../database/";
+    outfile = "output.json";
+    var fs = require('fs');
+    let data = JSON.stringify({FarmData: jsn}, null, ' ');
+    fs.writeFileSync(outDir + outfile, data);
 }
 
 function mapListSet(){
@@ -103,4 +129,3 @@ function mapListSet(){
         // "Esri Ocean Base Map": Basic_Map[ 9 ],
     };
 }
-
