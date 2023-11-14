@@ -1,12 +1,24 @@
-var mapobj;
-var pline;
+var mapobj; //mapオブジェクト
+var pline; //map上の直線オブジェクト
 
 function init() {
-    mapobj = L.map("mapid", { zoomControl : false});
     let mapcenter = [34.6476991, 135.7589965];
     let mapZoom = 16;
-    mapobj.setView(mapcenter, mapZoom);
-    L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/std/{z}/{x}/{y}.png", {
+    mapobj = L.map("mapid", {
+        center : mapcenter,
+        zoom : mapZoom,
+        dragging : false,
+        touchZoom : false,
+        scrollWheelZoom : false,
+        doubleClickZoom : false,
+        boxZoom : false,
+        tap : false,
+        keyboard : false,
+        closePopupOnClick : true,
+        zoomControl : false
+    });
+    // mapobj.setView(mapcenter, mapZoom);
+    L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png", {
         attribution : "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(mapobj);
 

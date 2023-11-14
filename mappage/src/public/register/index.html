@@ -4,8 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Registration</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+  <link rel="stylesheet" href="./map.css">
+
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <script src="./register.js"></script>
+
 </head>
-<body>
+<body onload="init()">
+  <header>
+    <!-- ヘッダー -->
+    <h1>地図登録</h1>
+    <!-- 選択タブとかあると良さげかも -->
+  </header>
   
+  <div>
+    <!-- メイン -->
+    <div class="container">
+      <!-- 地図位置指定 -->
+      <div id="map-select"></div>
+    </div>
+    <div class="container">
+      <!-- 名付け+登録 -->
+    </div>
+    
+  </div>
+
+  <footer>
+    <!-- フッター -->
+  </footer>
 </body>
 </html>

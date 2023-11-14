@@ -1,0 +1,9 @@
+.container{
+    margin: 10px;
+}
+
+#map-select{
+    width: 80%;
+    height: 60vh;
+    display: inline-block;
+}
