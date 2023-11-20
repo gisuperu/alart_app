@@ -1,7 +1,10 @@
 const express = require("express");
+const fs = require("fs")
 
 const app = express();
 const port = 5678;
+
+const databaseFile = __dirname + "/public/database/user.json";
 
 // app.use(express.json());
 
@@ -17,6 +20,25 @@ app.get("/register", (req, res) => {
 app.post("/visualizer", (req, res) =>  {
     res.sendFile(__dirname + "/public/visulizer");
 })
+
+/* 
+req.body format
+{
+    method : "POST",
+    body : JSON.stringify(any),
+    headers: {
+        "Content-Type": "application/json"
+    }
+}
+*/
+// app.post("/database" , (req, res) => {
+//     console.log(req.body);
+//     try {
+//         fs.writeFileSync(databaseFile, req.body);
+//     } catch (err) {
+//         console.log(err);
+//     }
+// })
 
 // app.get('/', (req, res)  => {
 //     res.sendFile(__dirname + '/public/index.html');

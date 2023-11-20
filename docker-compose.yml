@@ -10,6 +10,7 @@ services:
       - ./webpage/src:/app/src # 共有フォルダ(要検索)
     command: node /app/src/index.js # コンテナ内での実行コマンド(要検索)
     tty: true 
+    init: true
     working_dir: /app/
   map-app:
     build: ./mappage
@@ -21,4 +22,5 @@ services:
       - ./mappage/src:/app/src
     command: node /app/src/server.js # コンテナ内での実行コマンド(要検索)
     tty : true
+    init: true
     working_dir: /app/

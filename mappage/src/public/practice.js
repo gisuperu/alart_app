@@ -22,6 +22,22 @@ function init() {
         attribution : "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
     }).addTo(mapobj);
 
+    // async evt => {
+    //     let bd = {
+    //         lat: mapcenter[0],
+    //         lng: mapcenter[1],
+    //         zoom: mapZoom,
+    //     }
+    //     console.log(bd)
+    //     await fetch("/database", {
+    //         method: "POST",
+    //         body: "hogehogehoge",
+    //         headers: {
+    //             "Content-Type" : "application/json",
+    //         },
+    //     });
+    // }
+
     mapobj.on("click", onMapClick); //地図のクリックイベントでonMapClick関数を呼び出す
 
     //plineをpolylineオブジェクトとし空座標を入れて地図に追加．
