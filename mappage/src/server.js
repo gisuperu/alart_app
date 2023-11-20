@@ -4,13 +4,16 @@ const fs = require("fs")
 const app = express();
 const port = 5678;
 
-const databaseFile = __dirname + "/public/database/user.json";
+// const databaseFile = __dirname + "/public/database/user.json";
+const databaseFile =`${__dirname}/database/user.json`;
 
-// app.use(express.json());
+app.use(express.json());
+
 
 // 接待したポートでサーバを待機状態にする
 app.listen(port, () => {
     console.log(`Start app at http://localhost:${port}`);
+    console.log(`Datafile directory : ${databaseFile}`);
 });
 
 app.get("/register", (req, res) => {
@@ -31,14 +34,18 @@ req.body format
     }
 }
 */
-// app.post("/database" , (req, res) => {
-//     console.log(req.body);
-//     try {
-//         fs.writeFileSync(databaseFile, req.body);
-//     } catch (err) {
-//         console.log(err);
-//     }
-// })
+app.post("/database" , (req, res) => {
+    // console.log(`Datafile directory : ${databaseFile}`);
+    console.log(req.body);
+    
+    try {
+        fs.writeFileSync(databaseFile, JSON.stringify(req.body));
+        res.send(true);
+    } catch (err) {
+        console.log(err);
+        res.send(false);
+    }
+})
 
 // app.get('/', (req, res)  => {
 //     res.sendFile(__dirname + '/public/index.html');
