@@ -1,11 +1,17 @@
-var mapobj; //地図選択のmapオブジェクト
-var Basic_Map; //地図の種類を列挙した配列オブジェクト
+var mapSelectObj; //地図選択のmapオブジェクト
+var nodeSelectObj;
+
+var msBasic_Map; //地図の種類を列挙した配列オブジェクト
+var nsBasic_Map; //地図の種類を列挙した配列オブジェクト
 var baseMap; // 地図切り替えメニューのオブジェクト
 
+let mapDefaultCenter = [34.6476991, 135.7589965];
+let mapDefaultZoom = 18;
+
 function init(){
-    mapobj = L.map("map-select", {
-        center : [34.6476991, 135.7589965],
-        zoom : 19,
+    mapSelectObj = L.map("map-select", {
+        center : mapDefaultCenter,
+        zoom : mapDefaultZoom,
         dragging : true,
         touchZoom : false,
         scrollWheelZoom : false,
@@ -16,24 +22,40 @@ function init(){
         closePopupOnClick : false,
         zoomControl : true
     });
+
+    nodeSelectObj = L.map("map-nodes-select", {
+        center : mapDefaultCenter,
+        zoom : mapDefaultZoom,
+        dragging : true,
+        touchZoom : false,
+        scrollWheelZoom : false,
+        doubleClickZoom : true,
+        boxZoom : false,
+        tap : false,
+        keyboard : true,
+        closePopupOnClick : false,
+        zoomControl : true
+    })
     // L.tileLayer("https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png", {
     //     minZoom : 5,
     //     maxZoom : 18,
     //     attribution : "<a href='https://maps.gsi.go.jp/development/ichiran.html' target='_blank'>地理院タイル</a>"
-    // }).addTo(mapobj);
+    // }).addTo(mapSelectObj);
 
-    mapListSet();
+    msBasic_Map = mapListSet(msBasic_Map);
+    nsBasic_Map = mapListSet(nsBasic_Map);
 
-    mapobj.addLayer( Basic_Map[0] );
+    mapSelectObj.addLayer(msBasic_Map[0]);
+    nodeSelectObj.addLayer(nsBasic_Map[0]);
 
-
-    L.control.layers(baseMap).addTo(mapobj);
+    L.control.layers(baseMap).addTo(mapSelectObj);
+    L.control.layers(baseMap).addTo(nodeSelectObj);
 
 }
 
 function btnMapSelect(){
-    let pos  = mapobj.getCenter();
-    let zoom = mapobj.getZoom();
+    let pos  = mapSelectObj.getCenter();
+    let zoom = mapSelectObj.getZoom();
 
     document.getElementById("fixed-map-center-text").innerHTML = "(" + pos.lat + ", " + pos.lng + ") : " + zoom;
     
@@ -42,6 +64,11 @@ function btnMapSelect(){
         lng : pos.lng,
         zoom : zoom,
     });
+
+    // nodeSelectObj.
+}
+function btnNodesSelect(){
+
 }
 
 // function getFarmData(){
@@ -57,7 +84,7 @@ function save2JSON(jsn){
     fs.writeFileSync(outDir + outfile, data);
 }
 
-function mapListSet(){
+function mapListSet(Basic_Map){
     Basic_Map = new Array();
     Basic_Map[ 0 ] = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         minZoom : 5,
@@ -128,4 +155,5 @@ function mapListSet(){
         // "Esri World Topo Map": Basic_Map[ 8 ],
         // "Esri Ocean Base Map": Basic_Map[ 9 ],
     };
+    return Basic_Map;
 }

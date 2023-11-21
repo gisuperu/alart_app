@@ -21,15 +21,47 @@
   
   <div>
     <!-- メイン -->
-    <div class="container">
+    <section>
       <!-- 地図位置指定 -->
-      <div id="map-select"></div>
-      <button onclick="btnMapSelect()">位置決定</button>
-      <p id="fixed-map-center-text"></p>
-    </div>
-    <div class="container">
+      <div class="float-wrapper">
+        <div class="float-wrapper-item">
+          <div class="container">
+            <div id="map-select"></div>
+          </div>
+        </div>
+        
+        <div class="float-wrapper-item">
+          <div class="container">
+            <button onclick="btnMapSelect()">位置決定</button>
+            <p id="fixed-map-center-text">{lat, lng}</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
       <!-- 名付け+登録 -->
-    </div>
+      <div class="float-wrapper">
+        <div class="float-wrapper-item">
+          <div class="container">
+            <div id="map-nodes-select"></div>
+          </div>
+        </div>
+        
+        <div class="float-wrapper-item">
+          <div class="container">
+            <button onclick="btnNodesSelect()">ノード位置決定</button>
+            <p id="fixed-map-nodes-text">[{lat, lng}, …]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <!-- 送信フォーム -->
+      <form action="" method="post"></form>
+    </section>
+
     
   </div>
 
