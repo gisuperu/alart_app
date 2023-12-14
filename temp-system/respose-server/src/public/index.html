@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>response-server</title>
+</head>
+<body>
+    <h1>Response Server index.html</h1>
+    <form method="POST" action="/">
+        <label>題名：<input type="text" id="title" name="title"></label>
+        <input type="submit" name="submit" value="post">
+    </form>
+
+    <button id="postTest">Post Test Button</button>
+
+    <div id="cont"></div>
+
+    <script>
+        postTest.onclick = async evt => {
+            let bd = {
+                timeStamp: "Jikan",
+                NodeID: "ID",
+                Direction: "dir",
+                sampledata: "data dayo!",
+            }
+            response = await fetch("/", {
+                method: "POST",
+                body: JSON.stringify(bd),
+                headers: {
+                    "Content-Type" : "application/json",
+                },
+            });
+
+            console.log(response);
+            document.getElementById("cont").innerHTML = response.status;
+
+        }
+    </script>
+</body>
+</html>
