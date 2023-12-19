@@ -8,6 +8,23 @@ DockerFileをつかってnode.jsの環境をつくる.
 複数コンテナを連携するときに使うdocker-compose.yml設定メモ
 # docker composeの用意
 `./docker-compose.yml`に記述する
+```
+version: "3" # docker composeのバージョン
+services:
+  alart-app: # サービス名
+    build: ./webpage # dockerイメージをbuildするディレクトリ指定(Dockerfileのあるディレクトリ)
+    image: alart-web-image # dockerイメージ名
+    container_name: alart-web # コンテナ名
+    ports:
+      - 8081:1234 # ポート接続 <メインOS側のポート>:<コンテナ内からのポート>
+    volumes:
+      - ./webpage/src:/app/src # 共有フォルダ
+    command: node /app/src/index.js # コンテナ内での実行コマンド
+    tty: true # コンテナアクセスを許可
+    init: true
+    working_dir: /app/ # 起動時のカレントディレクトリ
+```
+
 
 
 ## 実行
