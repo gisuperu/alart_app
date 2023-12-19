@@ -1,5 +1,24 @@
 version: "3"
 services:
+  revese-proxy:
+    image: nginx
+    volumes:
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 80:80
+  store-srv:
+    build: ./store-srv
+    image: store-srv-image
+    container_name: store-srv
+    ports: 
+      - 4000:2000
+    volumes:
+      - ./store-srv/src:/app/src # 共有フォルダ(要検索)
+    command: node /app/src/server.js # コンテナ内での実行コマンド(要検索)
+    tty: true 
+    init: true
+    working_dir: /app/
+
   alart-app: #サービス名
     build: ./webpage # dockerイメージをbuildするディレクトリ指定(Dockerfileのあるディレクトリ)
     image: alart-web-image # dockerイメージ名
@@ -10,6 +29,7 @@ services:
       - ./webpage/src:/app/src # 共有フォルダ(要検索)
     command: node /app/src/index.js # コンテナ内での実行コマンド(要検索)
     tty: true 
+    init: true
     working_dir: /app/
   map-app:
     build: ./mappage
@@ -21,4 +41,5 @@ services:
       - ./mappage/src:/app/src
     command: node /app/src/server.js # コンテナ内での実行コマンド(要検索)
     tty : true
+    init: true
     working_dir: /app/

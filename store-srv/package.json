@@ -1,5 +1,5 @@
 {
-    "name": "map-app",
+    "name": "store-srv",
     "version": "1.0.0",
     "description": "Node.js on Docker",
     "main": "./src/server.js",

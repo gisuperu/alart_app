@@ -2,7 +2,7 @@ const express = require("express");
 const fs = require("fs")
 
 const app = express();
-const port = 5678;
+const port = 2000;
 
 // const databaseFile = __dirname + "/public/database/user.json";
 const databaseFile =`${__dirname}/database/user.json`;
@@ -34,12 +34,16 @@ req.body format
     }
 }
 */
+app.get("/database", (req, res) => {
+    res.sendFile(__dirname + "/public/register");
+    // res.sendFile(`${__dirname}/public/dumy.html`);
+})
 app.post("/database" , (req, res) => {
     // console.log(`Datafile directory : ${databaseFile}`);
     console.log(req.body);
     
     try {
-        fs.writeFileSync(databaseFile, JSON.stringify(req.body));
+        fs.appendFileSync(databaseFile, JSON.stringify(req.body));
         res.send(true);
     } catch (err) {
         console.log(err);

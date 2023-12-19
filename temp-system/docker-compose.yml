@@ -1,0 +1,14 @@
+version: "1"
+services:
+  respose-server:
+    build: ./respose-server
+    image: respose-srv-img
+    container_name: respose-srv
+    ports:
+      - 80:80
+    volumes:
+      - ./respose-server/src:/app/src
+    command: node /app/src/server.js
+    tty: true
+    init: true
+    working_dir: /app/

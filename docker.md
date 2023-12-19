@@ -28,6 +28,13 @@ docker-compose exec alart-app sh
 
 `sh`は`bash`とか`/bin/sh`とかじゃないと実行できない場合がある．
 
+## コンテナの個別起動・停止
+```
+docker-compose rm -fsv コンテナ名
+docker-compose up -d コンテナ名
+```
+`docker-compose down`で個別に停止するのは無理みたい
+
 # 今後に向けてのメモ
 - イメージの軽量化
     - マルチステージビルド
