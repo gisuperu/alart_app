@@ -1,0 +1,90 @@
+version: "3"
+services:
+  # リバースプロキシ
+  # reverse-proxy:
+  #   build: ./reverse-proxy
+  #   image: reverse-proxy-img
+  #   container_name: reverse-proxy
+  #   ports:
+  #     - 
+  #   volumes:
+  #     - 
+  #   networks:
+  #     - surface
+  #     - inside
+
+  # 通知アプリ
+  # notification-app:
+  #   build: ./notification-app
+  #   image: notification-app-img
+  #   container_name: notification-app
+  #   ports:
+  #     - 
+  #   volumes:
+  #     - 
+  #   networks:
+  #     - inside
+
+  # マップアプリ(ビジュアライザ)
+  # visualizer-app:
+  #   build: ./visualizer-app
+  #   image: visualizer-app-img
+  #   container_name: visualizer-app
+  #   ports:
+  #     - 
+  #   volumes:
+  #     - 
+  #   networks:
+  #     - inside
+
+  # データ解析ノード
+  # analizer-node:
+  #   build: ./analizer-node
+  #   image: analizer-node-img
+  #   container_name: analizer-node
+  #   ports:
+  #     - 
+  #   volumes:
+  #     - 
+  #   networks:
+  #     - inside
+
+  # データベースのAPI
+  # database-api:
+  #   build: ./database-api
+  #   image: database-api-img
+  #   container_name: database-api
+  #   ports:
+  #     - 
+  #   volumes:
+  #     - 
+  #   networks:
+  #     - inside
+  #     - db-bus
+
+  # データベース
+  # database:
+  #   networks:
+  #     - db-bus
+
+networks:
+  surface:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/30
+  inside:
+    driver: bridge
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.10.0/28
+  db-bus:
+    driver: bridge
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.255.0/29
