@@ -1,5 +1,5 @@
 version: "3"
-service:
+services:
   # リバースプロキシ
   # reverse-proxy:
   #   build: ./reverse-proxy
@@ -9,6 +9,9 @@ service:
   #     - 
   #   volumes:
   #     - 
+  #   networks:
+  #     - surface
+  #     - inside
 
   # 通知アプリ
   # notification-app:
@@ -19,6 +22,8 @@ service:
   #     - 
   #   volumes:
   #     - 
+  #   networks:
+  #     - inside
 
   # マップアプリ(ビジュアライザ)
   # visualizer-app:
@@ -29,6 +34,8 @@ service:
   #     - 
   #   volumes:
   #     - 
+  #   networks:
+  #     - inside
 
   # データ解析ノード
   # analizer-node:
@@ -39,6 +46,8 @@ service:
   #     - 
   #   volumes:
   #     - 
+  #   networks:
+  #     - inside
 
   # データベースのAPI
   # database-api:
@@ -49,8 +58,33 @@ service:
   #     - 
   #   volumes:
   #     - 
+  #   networks:
+  #     - inside
+  #     - db-bus
 
   # データベース
   # database:
+  #   networks:
+  #     - db-bus
 
-# networks:
+networks:
+  surface:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.0.0/30
+  inside:
+    driver: bridge
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.10.0/28
+  db-bus:
+    driver: bridge
+    internal: true
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.255.0/29
