@@ -24,7 +24,7 @@ services:
     image: alart-web-image
     container_name: alart-web
     ports:
-      - 8081:1234 # ポート接続 <メインOS側のポート>:<コンテナ内からのポート>
+      - 8082:1234 # ポート接続 <メインOS側のポート>:<コンテナ内からのポート>
     volumes:
       - ./webpage/src:/app/src
     command: node /app/src/index.js

@@ -41,11 +41,21 @@ app.use(express.json());
 // 公開鍵を応答するアクション
 app.get('/key', (req, res) => {
   res.status(200).send(vapidKeys.publicKey);
+    // BJjjphMxb1XY1ZIrMJKXC6y_2XHgZQp5N0_wY2AuwKIekgqnqjjCbS8c7--dFpaeBiQCPsrnCjIX0Zi7T0hcNG8
+
 })
 
 // POST を受けたら、5秒後に Push 通知を送信するアクション
 app.post('/webpushtest', (req, res) => {
     console.log(req.body);
+// alart-web       | {
+// alart-web       |   endpoint: 'https://fcm.googleapis.com/fcm/send/dN9TlCp9T9c:APA91bGkderBQ7-FKh3dJ06jGC-J1A9qdeHl3XqeWRM-MNCN_wWhNKhY3DF9NmQtEpYeKGmtVz-QTfz7qKb6eWN_cdqHNb7apQh2vQKrW3tT1UApOmfskCnY2rnpW2UmktEl5LCdwnUF',
+// alart-web       |   expirationTime: null,
+// alart-web       |   keys: {
+// alart-web       |     p256dh: 'BHouB8XJ3Y_H8QfIfTdEVYlm2V6eCJGf_AS7ZBwwG02XNkuVvruMFjMD7jKIoTeklVevlSsPeHumtyQy3wdSv5c',
+// alart-web       |     auth: 'xqimnS9DUtA1l6JqnUNP0g'
+// alart-web       |   }
+// alart-web       | }
     try {
         setTimeout(async _ => { // ちょっと遅延させて通知
             await webPush.sendNotification(req.body, JSON.stringify({
