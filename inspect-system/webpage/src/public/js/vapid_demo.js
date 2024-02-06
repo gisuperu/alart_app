@@ -3,6 +3,8 @@ let convertedVapidKey, subscription;
 (async _ => {
     try {
         const registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+        // registration.pushManager.unsubscribe();
+
 
         // サーバー側で生成したパブリックキーを取得し、urlBase64ToUint8Array()を使ってUit8Arrayに変換
         const res = await fetch('/key');
@@ -27,7 +29,7 @@ let convertedVapidKey, subscription;
 })();
 
 btnWebPushTest.onclick = async evt => {
-    if (!subscription) return console.log('sbuscription is null');
+    if (!subscription) return console.log('subuscription is null');
     await fetch('/webpushtest', {
         method: 'POST',
         body: JSON.stringify(subscription),
@@ -35,6 +37,13 @@ btnWebPushTest.onclick = async evt => {
             'Content-Type': 'application/json',
         },
     });
+    // await fetch('/webpushtest', {
+    //     method: 'POST',
+    //     body: "{ testdata : 'test' }",
+    //     headers: {
+    //         'Content-Type': 'application/x-www-form-urlencoded',
+    //     },
+    // });
 };
 
 function urlBase64ToUint8Array(base64String) {
