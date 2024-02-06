@@ -1,14 +1,27 @@
-version: "1"
+version: "3"
 services:
-  respose-server:
-    build: ./respose-server
-    image: respose-srv-img
-    container_name: respose-srv
+  # respose-server:
+  #   build: ./respose-server
+  #   image: respose-srv-img
+  #   container_name: respose-srv
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - ./respose-server/src:/app/src
+  #   command: node /app/src/server.js
+  #   tty: true
+  #   init: true
+  #   working_dir: /app/
+  notification-server:
+    build: ./notification-server
+    image: notification-srv-img
+    container_name: notification-srv
     ports:
       - 80:80
+      - 443:443
     volumes:
-      - ./respose-server/src:/app/src
-    command: node /app/src/server.js
+      - ./notification-server/src:/app/src
+    # command: node /app/src/server.js
     tty: true
     init: true
     working_dir: /app/

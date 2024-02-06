@@ -1,0 +1,24 @@
+<html lang="en">
+<head>
+    <title>WebPush example</title>
+    <base href="https://andreinwald.github.io/webpush-ios-example/">
+    <link rel="manifest" href="manifest.json"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="apple-touch-icon" href="images/favicon.png"> <!-- needed for phone PWA app icon -->
+</head>
+<body>
+<div class="wrapper">
+    <h1>WebPush example</h1>
+
+    <button id="subscribe_btn" onclick="subscribeToPush()">Subscribe to notifications</button>
+
+    <div id="active_sub"></div>
+    <button id="test_send_btn" onclick="testSend()">Send test push</button>
+
+</div>
+
+<script src="demo.js"></script>
+</body>
+</html>
