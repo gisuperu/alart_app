@@ -40,17 +40,23 @@ function isPushManagerActive(pushManager) {
 async function subscribeToPush() {
     // Public part of VAPID key, generation of that covered in README
     // All subscription tokens associated with that key, so if you change it - you may lose old subscribers
-    const VAPID_PUBLIC_KEY = 'BAwUJxIa7mJZMqu78Tfy2Sb1BWnYiAatFCe1cxpnM-hxNtXjAwaNKz1QKLU8IYYhjUASOFzSvSnMgC00vfsU0IM';
+    const VAPID_PUBLIC_KEY = '';
+
+    convertedVapidKey = urlBase64ToUint8Array(vapidPublicKey);
+    console.log(`vapidPublicKey: ${vapidPublicKey}`);
 
     let swRegistration = await navigator.serviceWorker.getRegistration();
     let pushManager = swRegistration.pushManager;
     if (!isPushManagerActive(pushManager)) {
         return;
     }
+
+
     let subscriptionOptions = {
         userVisibleOnly: true,
-        applicationServerKey: VAPID_PUBLIC_KEY
+        applicationServerKey: convertedVapidKey
     };
+    console.log(subscriptionOptions);
     try {
         let subscription = await pushManager.subscribe(subscriptionOptions);
         displaySubscriptionInfo(subscription);
@@ -83,4 +89,15 @@ function testSend() {
     navigator.serviceWorker.ready.then(async function (serviceWorker) {
         await serviceWorker.showNotification(title, options);
     });
+}
+
+function urlBase64ToUint8Array(base64String) {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding).replace(/-/g, '+').replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+    for (let i = 0; i < rawData.length; ++i) {
+        outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
 }
