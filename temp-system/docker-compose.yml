@@ -25,3 +25,15 @@ services:
     tty: true
     init: true
     working_dir: /app/
+  # map-app:
+  #   build: ./map-app
+  #   image: map-app-img
+  #   container_name: map-app
+  #   ports:
+  #     - 8080:5678
+  #   volumes:
+  #     - ./map-app/src:/app/src
+  #   # command: node /app/src/server.js
+  #   tty: true
+  #   init: true
+  #   working_dir: /app/
